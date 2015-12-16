@@ -1,0 +1,14 @@
+<% provide(:title, 'Search Flights') %>
+
+<h1 class="page-header">Flight Booker</h1>
+
+<div>
+<%= render 'search' %>
+</div>
+
+<% if !@flights.none? %>
+  <%= render 'search_results' %>
+<% else %>
+  <h3>No flights found</h3>
+<% end %>
+

@@ -1,0 +1,28 @@
+<% provide(:title, 'Booking') %>
+<h1>Booking Page</h1>
+
+<fieldset>
+  <legend>Trip Details</legend>
+  <h3>Flight #<%= @flight.id %></h3>
+  <h3>
+  <%= @flight.from_airport.code %> -> <%= @flight.to_airport.code %>
+  </h3>
+  <p><%= @flight.start_time.strftime("%A, %B %d, %Y") %></p>
+</fieldset>
+
+    <%= form_for(@booking) do |f| %>
+      <%= f.hidden_field :flight_id %>         
+      <fieldset>
+        <legend>Passengers Information</legend>
+        <%= f.fields_for :passengers do |passenger| %>
+
+          <%= passenger.text_field :name, class: 'form-group',
+            placeholder: 'Your Name Here' %>
+
+          <%= passenger.text_field :email, class: 'form-group',
+            placeholder: 'contact@email.com' %></br>
+  
+        <% end %>
+      </fieldset>
+      <%= f.submit "Book Flight", class: "button" %>
+    <% end %>

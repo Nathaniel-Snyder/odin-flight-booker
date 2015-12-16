@@ -1,0 +1,22 @@
+<h3>Search</h3>
+
+<%= form_tag flights_path, method: 'get', class: 'dropdown' do %>
+
+	<%= hidden_field_tag :search %>
+	<p>	 
+		<%= select_tag :to_airport_id, options_for_select(@airports), prompt: "To", 
+			class: 'btn' %>
+  
+		<%= select_tag :from_airport_id, options_for_select(@airports), prompt: "From", 
+		class: 'btn'%></br></br>
+
+		<%= select_tag :passengers, options_for_select(@passengers), prompt: "Passengers",
+		class: 'btn' %>
+		</br></br>
+
+		<%= select_tag :start_time, options_for_select(@start_times), prompt: "Date",
+		class: 'btn' %></br></br>
+
+		<%= submit_tag "Search", :name => nil, class:'btn-primary btn-lg' %>
+	</p>
+<% end %>
